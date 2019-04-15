@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>LCOV - 589397ee1fa5fcc96e42a71bb6965c09818befc8 - Evolution/DiscontinuousGalerkin/SlopeLimiters/MinmodTci.hpp</title>
+  <link rel="stylesheet" type="text/css" href="../../../gcov.css">
+</head>
+
+<body>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="title"> SpECTRE Documentation Coverage Report</td></tr>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+
+    <tr>
+      <td width="100%">
+        <table cellpadding=1 border=0 width="100%">
+          <tr>
+            <td width="10%" class="headerItem">Current view:</td>
+            <td width="35%" class="headerValue"><a href="../../../index.html">top level</a> - <a href="index.html">Evolution/DiscontinuousGalerkin/SlopeLimiters</a> - MinmodTci.hpp</td>
+            <td width="5%"></td>
+            <td width="15%"></td>
+            <td width="10%" class="headerCovTableHead">Hit</td>
+            <td width="10%" class="headerCovTableHead">Total</td>
+            <td width="15%" class="headerCovTableHead">Coverage</td>
+          </tr>
+          <tr>
+             <td class="headerItem">Commit:</td>
+             <td class="headerValue"><a target="_blank" href="https://github.com/sxs-collaboration/spectre/commit/589397ee1fa5fcc96e42a71bb6965c09818befc8">589397ee1fa5fcc96e42a71bb6965c09818befc8</a></td>
+            <td></td>
+            <td class="headerItem">Lines:</td>
+            <td class="headerCovTableEntry">0</td>
+            <td class="headerCovTableEntry">1</td>
+            <td class="headerCovTableEntryLo">0.0 %</td>
+          </tr>
+          <tr>
+            <td class="headerItem">Date:</td>
+            <td class="headerValue">2019-04-15 08:06:22</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="headerItem">Legend:</td>
+            <td class="headerValueLeg">            Lines:
+            <span class="coverLegendCov">hit</span>
+            <span class="coverLegendNoCov">not hit</span>
+</td>
+            <td></td>
+          </tr>
+          <tr><td><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+  </table>
+
+  <table cellpadding=0 cellspacing=0 border=0>
+    <tr>
+      <td><br></td>
+    </tr>
+    <tr>
+      <td>
+<pre class="sourceHeading">          Line data    Source code</pre>
+<pre class="source">
+<span class="lineNum">       1 </span><span class="lineNoCov">          0 : // Distributed under the MIT License.</span>
+<span class="lineNum">       2 </span>            : // See LICENSE.txt for details.
+<span class="lineNum">       3 </span>            : 
+<span class="lineNum">       4 </span>            : #pragma once
+<span class="lineNum">       5 </span>            : 
+<span class="lineNum">       6 </span>            : #include &lt;array&gt;
+<span class="lineNum">       7 </span>            : #include &lt;cstdlib&gt;
+<span class="lineNum">       8 </span>            : #include &lt;utility&gt;
+<span class="lineNum">       9 </span>            : 
+<span class="lineNum">      10 </span>            : #include &quot;Evolution/DiscontinuousGalerkin/SlopeLimiters/MinmodType.hpp&quot;
+<span class="lineNum">      11 </span>            : #include &quot;Utilities/Gsl.hpp&quot;
+<span class="lineNum">      12 </span>            : 
+<span class="lineNum">      13 </span>            : /// \cond
+<span class="lineNum">      14 </span>            : class DataVector;
+<span class="lineNum">      15 </span>            : template &lt;size_t Dim, typename T&gt;
+<span class="lineNum">      16 </span>            : class DirectionMap;
+<span class="lineNum">      17 </span>            : template &lt;size_t VolumeDim&gt;
+<span class="lineNum">      18 </span>            : class Element;
+<span class="lineNum">      19 </span>            : template &lt;size_t VolumeDim&gt;
+<span class="lineNum">      20 </span>            : class Mesh;
+<span class="lineNum">      21 </span>            : /// \endcond
+<span class="lineNum">      22 </span>            : 
+<span class="lineNum">      23 </span>            : namespace SlopeLimiters {
+<span class="lineNum">      24 </span>            : namespace Minmod_detail {
+<span class="lineNum">      25 </span>            : 
+<span class="lineNum">      26 </span>            : // Implements the troubled-cell indicator corresponding to the Minmod limiter.
+<span class="lineNum">      27 </span>            : //
+<span class="lineNum">      28 </span>            : // The troubled-cell indicator (TCI) determines whether or not limiting is
+<span class="lineNum">      29 </span>            : // needed. See SlopeLimiters::Minmod for a full description of the Minmod
+<span class="lineNum">      30 </span>            : // limiter. Note that as an optimization, this TCI returns (by reference) some
+<span class="lineNum">      31 </span>            : // additional data that are used by the Minmod limiter in the case where the
+<span class="lineNum">      32 </span>            : // TCI returns true (i.e., the case where limiting is needed).
+<span class="lineNum">      33 </span>            : template &lt;size_t VolumeDim&gt;
+<span class="lineNum">      34 </span>            : bool troubled_cell_indicator(
+<span class="lineNum">      35 </span>            :     gsl::not_null&lt;double*&gt; u_mean,
+<span class="lineNum">      36 </span>            :     gsl::not_null&lt;std::array&lt;double, VolumeDim&gt;*&gt; u_limited_slopes,
+<span class="lineNum">      37 </span>            :     gsl::not_null&lt;DataVector*&gt; u_lin_buffer,
+<span class="lineNum">      38 </span>            :     gsl::not_null&lt;std::array&lt;DataVector, VolumeDim&gt;*&gt; boundary_buffer,
+<span class="lineNum">      39 </span>            :     const SlopeLimiters::MinmodType&amp; minmod_type, double tvbm_constant,
+<span class="lineNum">      40 </span>            :     const DataVector&amp; u, const Element&lt;VolumeDim&gt;&amp; element,
+<span class="lineNum">      41 </span>            :     const Mesh&lt;VolumeDim&gt;&amp; mesh,
+<span class="lineNum">      42 </span>            :     const std::array&lt;double, VolumeDim&gt;&amp; element_size,
+<span class="lineNum">      43 </span>            :     const DirectionMap&lt;VolumeDim, double&gt;&amp; effective_neighbor_means,
+<span class="lineNum">      44 </span>            :     const DirectionMap&lt;VolumeDim, double&gt;&amp; effective_neighbor_sizes,
+<span class="lineNum">      45 </span>            :     const std::array&lt;std::pair&lt;gsl::span&lt;std::pair&lt;size_t, size_t&gt;&gt;,
+<span class="lineNum">      46 </span>            :                                gsl::span&lt;std::pair&lt;size_t, size_t&gt;&gt;&gt;,
+<span class="lineNum">      47 </span>            :                      VolumeDim&gt;&amp; volume_and_slice_indices) noexcept;
+<span class="lineNum">      48 </span>            : 
+<span class="lineNum">      49 </span>            : }  // namespace Minmod_detail
+<span class="lineNum">      50 </span>            : }  // namespace SlopeLimiters
+</pre>
+      </td>
+    </tr>
+  </table>
+  <br>
+
+  <table width="100%" border=0 cellspacing=0 cellpadding=0>
+    <tr><td class="ruler"><img src="../../../glass.png" width=3 height=3 alt=""></td></tr>
+    <tr><td class="versionInfo">Generated by: <a href="http://ltp.sourceforge.net/coverage/lcov.php" target="_parent">LCOV version 1.13</a></td></tr>
+  </table>
+  <br>
+
+</body>
+</html>

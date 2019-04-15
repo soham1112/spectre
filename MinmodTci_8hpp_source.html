@@ -1,0 +1,219 @@
+<!-- HTML header for doxygen 1.8.10-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=9"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="SXS Collaboration">
+    <meta name="generator" content="Doxygen 1.8.13"/>
+    <style>
+        /*!
+         * IE10 viewport hack for Surface/desktop Windows 8 bug
+         * Copyright 2014-2015 Twitter, Inc.
+         * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+         */
+        @-webkit-viewport { width: device-width; }
+        @-moz-viewport    { width: device-width; }
+        @-ms-viewport     { width: device-width; }
+        @-o-viewport      { width: device-width; }
+        @viewport         { width: device-width; }
+      </style>
+  <title>SpECTRE: src/Evolution/DiscontinuousGalerkin/SlopeLimiters/MinmodTci.hpp Source File</title>
+  <link href="tabs.css" rel="stylesheet" type="text/css"/>
+  <script type="text/javascript" src="jquery.js"></script>
+  <script type="text/javascript" src="dynsections.js"></script>
+  <link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+  <script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js", "TeX/AMSmath.js", "TeX/AMSsymbols.js", "color.js"],
+    jax: ["input/TeX","output/HTML-CSS"],
+});
+MathJax.Hub.Config({
+    TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+MathJax.Hub.Config({
+    tex2jax: {inlineMath: [['^^','^^'], ['\\(', '\\)']]}
+});
+</script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js"></script>
+  <link href="octicons.css" rel="stylesheet">
+  <link href="bootstrap.min.css" rel="stylesheet">
+  <link href="doxygen.css" rel="stylesheet" type="text/css" />
+  <script type="text/javascript" src="jquery.js"></script>
+  <script type="text/javascript" src="popper.min.js"></script>
+  <script type="text/javascript" src="bootstrap.min.js"></script>
+  <script type="text/javascript" src="spectre.js"></script>
+  </head>
+  <body>
+  <div id="top" class="navbar-fixed-top"><!-- do not remove this div, it is closed by doxygen! -->
+  <!-- BEGIN TITLEAREA -->
+  <div id="titlearea">
+  <script type="text/javascript">
+  var searchBox = new SearchBox("searchBox", "search",false,'Search');
+  </script>
+  <div id="main-nav">
+    <ul class="sm sm-dox" id="main-menu">
+      <li>
+      <a href="index.html">
+      SpECTRE &#160;
+        <span id="projectnumber">v0.0.0</span>
+      </a>
+      </li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="selected">
+          <span id="selected">
+            <i class="octicon octicon-book"></i><span>Documentation</span>
+          </span>
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li style="min-width: 135px;">
+            <a href="index.html">
+            <i class="octicon octicon-book"></i><span>Introduction</span></a>
+          </li>
+          <li style="min-width: 135px;">
+            <a href="installation.html">
+              <i class="octicon octicon-desktop-download"></i><span>Installation</span>
+            </a>
+          </li>
+          <li style="min-width: 135px;">
+            <a href="tutorials.html">
+              <i class="octicon octicon-mortar-board"></i><span>User Tutorials</span>
+            </a>
+          </li>
+          <li style="min-width: 135px;">
+            <a href="dev_guide.html">
+              <i class="octicon octicon-gist-secret"></i><span>Dev Guide</span>
+            </a>
+          </li>
+          <li style="min-width: 135px;">
+            <a href="code_of_conduct.html">
+              <i class="octicon octicon-comment-discussion"></i><span>Code of Conduct</span>
+            </a>
+          </li>
+          <li style="min-width: 135px;">
+            <a href="contributing_to_spectre.html">
+              <i class="octicon octicon-git-pull-request"></i><span>Contributing Guide</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#" id="selected">
+          <span id="selected">
+            <i class="octicon octicon-code"></i>
+              <span>Code Reference</span>
+          </span>
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li style="min-width: 130px;">
+            <a href="modules.html">
+              <i class="octicon octicon-code"></i>
+              <span>Topics</span>
+            </a>
+          </li>
+          <li style="min-width: 130px;">
+            <a href="namespaces.html">
+              <i class="octicon octicon-gist"></i>
+              <span>Namespaces</span>
+            </a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="files.html">
+          <i class="octicon octicon-file-directory"></i><span>Files</span>
+        </a>
+      </li>
+      <li>
+        <a href="citelist.html">
+          <i class="octicon octicon-file-text"></i><span>Bibliography</span>
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/sxs-collaboration/spectre" target="_blank">
+          <i class="octicon octicon-mark-github"></i><span>View on GitHub</span>
+        </a>
+      </li>
+      <!--The Search <li> is added by doxygen later-->
+    </ul>
+  </div><!-- main-nav -->
+  </div><!-- titlearea -->
+  <!-- window showing the filter options -->
+  <div id="MSearchSelectWindow"  style="position: fixed;"
+       onmouseover="return searchBox.OnSearchSelectShow()"
+       onmouseout="return searchBox.OnSearchSelectHide()"
+       onkeydown="return searchBox.OnSearchSelectKey(event)">
+  </div>
+  <!-- iframe showing the search results (closed by default) -->
+  <div id="MSearchResultsWindow"  style="position: fixed;">
+  <iframe src="javascript:void(0)" frameborder="0"
+          name="MSearchResults" id="MSearchResults">
+  </iframe>
+  </div>
+<!-- Generated by Doxygen 1.8.13 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Search');
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Search');
+  $(document).ready(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_22cd119e9135d55404da822cc2bf42d2.html">src</a></li><li class="navelem"><a class="el" href="dir_7d19b16c3461122ea63afe85d1697a3b.html">Evolution</a></li><li class="navelem"><a class="el" href="dir_f852cfe62e9b11bebd9bd12eafa67e82.html">DiscontinuousGalerkin</a></li><li class="navelem"><a class="el" href="dir_b32ec8acfa4f29eda6bc2452b57405ff.html">SlopeLimiters</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">MinmodTci.hpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// Distributed under the MIT License.</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// See LICENSE.txt for details.</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#pragma once</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" doxygen="/work/spectre/docs/config/cppreference-doxygen-web.tag.xml:http://en.cppreference.com/w/" href="http://en.cppreference.com/w/cpp/header/array.html">array</a>&gt;</span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" doxygen="/work/spectre/docs/config/cppreference-doxygen-web.tag.xml:http://en.cppreference.com/w/" href="http://en.cppreference.com/w/cpp/header/cstdlib.html">cstdlib</a>&gt;</span></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="codeRef" doxygen="/work/spectre/docs/config/cppreference-doxygen-web.tag.xml:http://en.cppreference.com/w/" href="http://en.cppreference.com/w/cpp/header/utility.html">utility</a>&gt;</span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;Evolution/DiscontinuousGalerkin/SlopeLimiters/MinmodType.hpp&quot;</span></div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Gsl_8hpp.html">Utilities/Gsl.hpp</a>&quot;</span></div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment"></span></div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">/// \cond</span></div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"></span><span class="keyword">class </span><a class="code" href="classDataVector.html">DataVector</a>;</div><div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">size_t</span> Dim, <span class="keyword">typename</span> T&gt;</div><div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">class </span><a class="code" href="classDirectionMap.html">DirectionMap</a>;</div><div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">size_t</span> VolumeDim&gt;</div><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">class </span><a class="code" href="classElement.html">Element</a>;</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">size_t</span> VolumeDim&gt;</div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">class </span><a class="code" href="classMesh.html">Mesh</a>;<span class="comment"></span></div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">/// \endcond</span></div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"></span></div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceSlopeLimiters.html">SlopeLimiters</a> {</div><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">namespace </span>Minmod_detail {</div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">// Implements the troubled-cell indicator corresponding to the Minmod limiter.</span></div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">//</span></div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">// The troubled-cell indicator (TCI) determines whether or not limiting is</span></div><div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">// needed. See SlopeLimiters::Minmod for a full description of the Minmod</span></div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">// limiter. Note that as an optimization, this TCI returns (by reference) some</span></div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">// additional data that are used by the Minmod limiter in the case where the</span></div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">// TCI returns true (i.e., the case where limiting is needed).</span></div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">template</span> &lt;<span class="keywordtype">size_t</span> VolumeDim&gt;</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keywordtype">bool</span> troubled_cell_indicator(</div><div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <a class="code" href="classgsl_1_1not__null.html">gsl::not_null&lt;double*&gt;</a> u_mean,</div><div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="classgsl_1_1not__null.html">gsl::not_null</a>&lt;<a class="codeRef" doxygen="/work/spectre/docs/config/cppreference-doxygen-web.tag.xml:http://en.cppreference.com/w/" href="http://en.cppreference.com/w/cpp/container/array.html">std::array&lt;double, VolumeDim&gt;</a>*&gt; u_limited_slopes,</div><div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="classgsl_1_1not__null.html">gsl::not_null&lt;DataVector*&gt;</a> u_lin_buffer,</div><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="classgsl_1_1not__null.html">gsl::not_null</a>&lt;<a class="codeRef" doxygen="/work/spectre/docs/config/cppreference-doxygen-web.tag.xml:http://en.cppreference.com/w/" href="http://en.cppreference.com/w/cpp/container/array.html">std::array&lt;DataVector, VolumeDim&gt;</a>*&gt; boundary_buffer,</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">const</span> <a class="code" href="group__SlopeLimitersGroup.html#ga8a1badd3312b72d2f4cfe0e81cd602ff">SlopeLimiters::MinmodType</a>&amp; minmod_type, <span class="keywordtype">double</span> tvbm_constant,</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">const</span> <a class="code" href="classDataVector.html">DataVector</a>&amp; u, <span class="keyword">const</span> <a class="code" href="classElement.html">Element&lt;VolumeDim&gt;</a>&amp; element,</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">const</span> <a class="code" href="classMesh.html">Mesh&lt;VolumeDim&gt;</a>&amp; mesh,</div><div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">const</span> <a class="codeRef" doxygen="/work/spectre/docs/config/cppreference-doxygen-web.tag.xml:http://en.cppreference.com/w/" href="http://en.cppreference.com/w/cpp/container/array.html">std::array&lt;double, VolumeDim&gt;</a>&amp; element_size,</div><div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">const</span> <a class="code" href="classDirectionMap.html">DirectionMap&lt;VolumeDim, double&gt;</a>&amp; effective_neighbor_means,</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">const</span> <a class="code" href="classDirectionMap.html">DirectionMap&lt;VolumeDim, double&gt;</a>&amp; effective_neighbor_sizes,</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">const</span> <a class="codeRef" doxygen="/work/spectre/docs/config/cppreference-doxygen-web.tag.xml:http://en.cppreference.com/w/" href="http://en.cppreference.com/w/cpp/container/array.html">std::array</a>&lt;<a class="codeRef" doxygen="/work/spectre/docs/config/cppreference-doxygen-web.tag.xml:http://en.cppreference.com/w/" href="http://en.cppreference.com/w/cpp/utility/pair.html">std::pair</a>&lt;<a class="code" href="classgsl_1_1span.html">gsl::span</a>&lt;<a class="codeRef" doxygen="/work/spectre/docs/config/cppreference-doxygen-web.tag.xml:http://en.cppreference.com/w/" href="http://en.cppreference.com/w/cpp/utility/pair.html">std::pair&lt;size_t, size_t&gt;</a>&gt;,</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                               <a class="code" href="classgsl_1_1span.html">gsl::span</a>&lt;<a class="codeRef" doxygen="/work/spectre/docs/config/cppreference-doxygen-web.tag.xml:http://en.cppreference.com/w/" href="http://en.cppreference.com/w/cpp/utility/pair.html">std::pair&lt;size_t, size_t&gt;</a>&gt;&gt;,</div><div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                     VolumeDim&gt;&amp; <a class="code" href="group__DataStructuresGroup.html#gaded546f8e87b9a001ecb3a0455f91446">volume_and_slice_indices</a>) noexcept;</div><div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}  <span class="comment">// namespace Minmod_detail</span></div><div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}  <span class="comment">// namespace SlopeLimiters</span></div><div class="ttc" id="utility_html"><div class="ttname"><a href="http://en.cppreference.com/w/cpp/header/utility.html">utility</a></div></div>
+<div class="ttc" id="group__DataStructuresGroup_html_gaded546f8e87b9a001ecb3a0455f91446"><div class="ttname"><a href="group__DataStructuresGroup.html#gaded546f8e87b9a001ecb3a0455f91446">volume_and_slice_indices</a></div><div class="ttdeci">std::pair&lt; std::unique_ptr&lt; std::pair&lt; size_t, size_t &gt;[], decltype(&amp;free)&gt;, std::array&lt; std::pair&lt; gsl::span&lt; std::pair&lt; size_t, size_t &gt; &gt;, gsl::span&lt; std::pair&lt; size_t, size_t &gt; &gt; &gt;, VolumeDim &gt; &gt; volume_and_slice_indices(const Index&lt; VolumeDim &gt; &amp;extents) noexcept</div><div class="ttdoc">Get the mapping between volume and boundary slice indices. </div><div class="ttdef"><b>Definition:</b> SliceIterator.cpp:49</div></div>
+<div class="ttc" id="classDirectionMap_html"><div class="ttname"><a href="classDirectionMap.html">DirectionMap</a></div><div class="ttdoc">An optimized map with Direction keys. </div><div class="ttdef"><b>Definition:</b> DirectionMap.hpp:15</div></div>
+<div class="ttc" id="cstdlib_html"><div class="ttname"><a href="http://en.cppreference.com/w/cpp/header/cstdlib.html">cstdlib</a></div></div>
+<div class="ttc" id="classMesh_html"><div class="ttname"><a href="classMesh.html">Mesh</a></div><div class="ttdoc">Holds the number of grid points, basis, and quadrature in each direction of the computational grid...</div><div class="ttdef"><b>Definition:</b> Mesh.hpp:49</div></div>
+<div class="ttc" id="group__SlopeLimitersGroup_html_ga8a1badd3312b72d2f4cfe0e81cd602ff"><div class="ttname"><a href="group__SlopeLimitersGroup.html#ga8a1badd3312b72d2f4cfe0e81cd602ff">SlopeLimiters::MinmodType</a></div><div class="ttdeci">MinmodType</div><div class="ttdoc">Possible types of the minmod slope limiter and/or troubled-cell indicator. </div><div class="ttdef"><b>Definition:</b> MinmodType.hpp:18</div></div>
+<div class="ttc" id="classgsl_1_1span_html"><div class="ttname"><a href="classgsl_1_1span.html">gsl::span</a></div><div class="ttdoc">Create a span/view on a range, which is cheap to copy (one pointer). </div><div class="ttdef"><b>Definition:</b> Gsl.hpp:291</div></div>
+<div class="ttc" id="namespaceSlopeLimiters_html"><div class="ttname"><a href="namespaceSlopeLimiters.html">SlopeLimiters</a></div><div class="ttdoc">Things relating to slope limiting. </div><div class="ttdef"><b>Definition:</b> Krivodonova.hpp:52</div></div>
+<div class="ttc" id="classElement_html"><div class="ttname"><a href="classElement.html">Element</a></div><div class="ttdoc">A spectral element with knowledge of its neighbors. </div><div class="ttdef"><b>Definition:</b> Element.hpp:29</div></div>
+<div class="ttc" id="pair_html"><div class="ttname"><a href="http://en.cppreference.com/w/cpp/utility/pair.html">std::pair</a></div></div>
+<div class="ttc" id="classDataVector_html"><div class="ttname"><a href="classDataVector.html">DataVector</a></div><div class="ttdoc">Stores a collection of function values. </div><div class="ttdef"><b>Definition:</b> DataVector.hpp:42</div></div>
+<div class="ttc" id="array_html"><div class="ttname"><a href="http://en.cppreference.com/w/cpp/header/array.html">array</a></div></div>
+<div class="ttc" id="Gsl_8hpp_html"><div class="ttname"><a href="Gsl_8hpp.html">Gsl.hpp</a></div><div class="ttdoc">Defines functions and classes from the GSL. </div></div>
+<div class="ttc" id="classgsl_1_1not__null_html"><div class="ttname"><a href="classgsl_1_1not__null.html">gsl::not_null</a></div><div class="ttdoc">Require a pointer to not be a nullptr </div><div class="ttdef"><b>Definition:</b> ConservativeFromPrimitive.hpp:12</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- HTML footer for doxygen 1.8.10-->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+&copy; Copyright 2017 - 2019
+<a href="https://black-holes.org">SXS Collaboration</a>,
+<a href="LICENSE.txt" target="_blank">
+<span class="hidden-xs">Distributed under the</span>
+MIT License</a>
+</small></address>
+</body>
+</html>
